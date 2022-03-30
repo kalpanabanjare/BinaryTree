@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace BinaryTree
 {
-
     public class Tree<T> where T : IComparable
     {
         public T Nodedata { get; set; }
@@ -18,6 +17,8 @@ namespace BinaryTree
             this.LeftTree = null;
             this.RightTree = null;
         }
+        int LeftCount = 0;
+        int RightCount = 0;
         public void Insert(T Value)
         {
             T Root = this.Nodedata;
@@ -31,6 +32,7 @@ namespace BinaryTree
                 {
                     this.LeftTree.Insert(Value);
                 }
+                LeftCount += 1;
             }
             else
             {
@@ -43,6 +45,11 @@ namespace BinaryTree
                     this.RightTree.Insert(Value);
                 }
             }
+           RightCount += 1;
+        }
+        public void Getsize()
+        {
+            Console.WriteLine("Binary Tree Size:" + (RightCount + LeftCount + 1));
         }
         public void Display()
         {
